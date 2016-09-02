@@ -512,6 +512,10 @@ fieldset[disabled] .btn-success.active {
 	height: 25px;
 }
 
+.mini-profile {
+	width: 130px;
+	height: 130px;
+}
 
 .small-profile {
 	width: 213px;
