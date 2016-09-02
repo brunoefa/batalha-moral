@@ -5,6 +5,6 @@
 </jsp:include>
 <jsp:include page="menu.jsp"></jsp:include>
 <jsp:include page="index-apresentacao.jsp"></jsp:include>
-<jsp:include page="index-ultimos-cadastrados.jsp"></jsp:include>
+<jsp:include page="index-recentes.jsp"></jsp:include>
 <jsp:include page="index-sobre.jsp"></jsp:include>
 <jsp:include page="rodape.jsp"></jsp:include>

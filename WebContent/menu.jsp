@@ -18,7 +18,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="candidato-form.jsp">Candidatos</a>
+                        <a href="candidato">Candidatos</a>
                     </li>
                     <li class="page-scroll">
                         <a href="">Batalha</a>
