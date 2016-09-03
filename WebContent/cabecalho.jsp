@@ -5,8 +5,8 @@
 </jsp:include>
 
 <jsp:include page="menu.jsp"></jsp:include>
-
     <section id="portfolio">
+		<!-- <div class="alert alert-success"><b>\o/</b> ${mensagem}</div> -->
         <div class="container margin-top3">
             <div class="row">
                 <div class="col-lg-12 text-center">

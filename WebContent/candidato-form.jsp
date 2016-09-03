@@ -4,7 +4,8 @@
 	<jsp:param value="Cadastro de Candidato" name="titulo"/>
 </jsp:include>
 
-	<form name="candidato" id="contactForm" novalidate action="">
+	<form name="candidato" id="contactForm" action="candidato" method="post">
+		<input type="hidden" name="acao" value="salvar">
        <div class="row control-group">
            <div class="form-group col-xs-12 floating-label-form-group controls">
                <label>Nome</label>
