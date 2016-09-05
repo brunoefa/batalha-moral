@@ -41,6 +41,8 @@
 	</a>
 </div>
 
+<jsp:include page="modal.jsp"></jsp:include>
+
 <!-- jQuery -->
 <script src="vendor/jquery/jquery.min.js"></script>
 

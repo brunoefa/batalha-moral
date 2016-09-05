@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.senai.dao.CandidatoDao;
 import com.senai.model.Candidato;
 
 /**
@@ -18,12 +19,10 @@ import com.senai.model.Candidato;
 public class CandidatoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	CandidatoDao candidatoDao;
+
     public CandidatoServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    	candidatoDao = new CandidatoDao();
     }
 
 	/**
@@ -46,7 +45,6 @@ public class CandidatoServlet extends HttpServlet {
 		
 	}
 	
-	
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("candidato-form.jsp");
 		rd.forward(request, response);
@@ -54,13 +52,10 @@ public class CandidatoServlet extends HttpServlet {
 	
 	private void salvar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Candidato c = preencherCandidato(request, response);
-		System.out.println(c.getNome());
-		System.out.println(c.getCargo());
-		System.out.println(c.getUrl());
-		System.out.println(c.getPartido());
-		System.out.println(c.getCidade());
-		System.out.println(c.getNumero());
+		candidatoDao.salvar(c);
 		
+		request.setAttribute("mensagem", "Candidato salvo com sucesso");
+		request.setAttribute("candidato", c);
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 	}
