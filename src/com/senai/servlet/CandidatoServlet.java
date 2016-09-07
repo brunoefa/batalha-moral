@@ -1,6 +1,7 @@
 package com.senai.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,30 +47,35 @@ public class CandidatoServlet extends HttpServlet {
 	}
 	
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("candidato-form.jsp");
-		rd.forward(request, response);
+		encaminharRequisicao(request, response, "candidato-form.jsp");
 	}
 	
 	private void salvar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Candidato c = preencherCandidato(request, response);
 		candidatoDao.salvar(c);
-		
 		request.setAttribute("mensagem", "Candidato salvo com sucesso");
-		request.setAttribute("candidato", c);
-		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		rd.forward(request, response);
+		listar(request, response);
 	}
 	
 	private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// capturar o ID
+		// chamar o método buscarPorId da classe dao
+		// colocar o candidato buscado como parametro na requicisao
+		// encaminhar a requisicao para o candidato-form.jsp
 	}
 	
 	private void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// capturar o ID
+		// chamar o método excluir da classe dao
+		// colocar uma mensagem de excluido com sucesso na requisicao
+		// encaminhar a requisicao para o candidato-list.jsp
 	}
 	
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		ArrayList<Candidato> listaCandidatos = new ArrayList<Candidato>();
+		listaCandidatos = candidatoDao.buscarTodos();
+		request.setAttribute("listaCandidatos", listaCandidatos);
+		encaminharRequisicao(request, response, "candidato-list.jsp");
 	}
 	
 	private Candidato preencherCandidato(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -83,6 +89,11 @@ public class CandidatoServlet extends HttpServlet {
 		c.setNumero(request.getParameter("numero"));
 
 		return c;
+	}
+	
+	private void encaminharRequisicao(HttpServletRequest request, HttpServletResponse response, String caminho) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher(caminho);
+		rd.forward(request, response);
 	}
 	
 }

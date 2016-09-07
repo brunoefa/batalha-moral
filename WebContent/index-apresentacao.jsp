@@ -4,9 +4,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive img-circle medium-profile" src="${candidato.url}" alt="">
+                    <img class="img-responsive img-circle medium-profile" src="img/barack.jpg" alt="">
                     <div class="intro-text">
-                        <span class="name">${mensagem}</span>
+                        <span class="name">Que começe a batalha</span>
                         <hr class="star-light">
                         <span class="skills">Pesquisa de intenção de voto em forma de game</span>
                     </div>
