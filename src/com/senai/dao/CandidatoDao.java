@@ -33,6 +33,40 @@ public class CandidatoDao {
 		
 	}
 	
+	public void atualizar(Candidato c) {
+		String sql = "UPDATE candidato SET nome = ?, cargo = ?, cidade = ?, url = ?, partido = ?, numero = ? WHERE id = ?";
+		
+		try {
+			
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps = preencherPreparedStatement(ps, c);
+			ps.execute();
+			ps.close();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+		
+	}
+	
+	public void excluir(Candidato c) {
+		String sql = "DELETE FROM candidato WHERE id = ?";
+		
+		try {
+			
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, c.getId());
+			ps.execute();
+			ps.close();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+		
+	}
+	
 	public ArrayList<Candidato> buscarTodos() {
 		String sql = "SELECT * FROM candidato";
 		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
@@ -55,6 +89,26 @@ public class CandidatoDao {
 		return listaCandidatos;
 	}
 	
+	public Candidato buscarPorId(Candidato candidato) {
+		String sql = "SELECT * FROM candidato WHERE id = ?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, candidato.getId());
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				candidato = preencherCandidato(rs);
+			}
+			
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+
+		return candidato;
+	}
+	
 	private Candidato preencherCandidato(ResultSet rs) throws SQLException{
 		Candidato c = new Candidato();
 		c.setId(rs.getInt("id"));
@@ -74,6 +128,11 @@ public class CandidatoDao {
 		ps.setString(4, c.getUrl());
 		ps.setString(5, c.getPartido());
 		ps.setString(6, c.getNumero());
+		
+		if (c.getId() != null) {
+			ps.setInt(7, c.getId());
+		}
+		
 		return ps;
 	}
 	

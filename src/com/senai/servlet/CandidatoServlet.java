@@ -51,24 +51,30 @@ public class CandidatoServlet extends HttpServlet {
 	}
 	
 	private void salvar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Candidato c = preencherCandidato(request, response);
-		candidatoDao.salvar(c);
+		Candidato c = capturarCandidato(request, response);
+		
+		if (c.getId() == null) {
+			candidatoDao.salvar(c);
+		} else {
+			candidatoDao.atualizar(c);
+		}
+		
 		request.setAttribute("mensagem", "Candidato salvo com sucesso");
 		listar(request, response);
 	}
 	
 	private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// capturar o ID
-		// chamar o método buscarPorId da classe dao
-		// colocar o candidato buscado como parametro na requicisao
-		// encaminhar a requisicao para o candidato-form.jsp
+		Candidato c = capturarCandidato(request, response);
+		c = candidatoDao.buscarPorId(c);
+		request.setAttribute("candidato", c);
+		encaminharRequisicao(request, response, "candidato-form.jsp");
 	}
 	
 	private void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// capturar o ID
-		// chamar o método excluir da classe dao
-		// colocar uma mensagem de excluido com sucesso na requisicao
-		// encaminhar a requisicao para o candidato-list.jsp
+		Candidato c = capturarCandidato(request, response);
+		candidatoDao.excluir(c);
+		request.setAttribute("mensagem", "Candidato excluído com sucesso");
+		listar(request, response);
 	}
 	
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -78,9 +84,15 @@ public class CandidatoServlet extends HttpServlet {
 		encaminharRequisicao(request, response, "candidato-list.jsp");
 	}
 	
-	private Candidato preencherCandidato(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private Candidato capturarCandidato(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Candidato c = new Candidato();
 
+		String sId = request.getParameter("id");
+		if (sId != null && !"".equals(sId)) {
+			Integer id = Integer.parseInt(sId);
+			c.setId(id);
+		}
+		
 		c.setNome(request.getParameter("nome"));
 		c.setCargo(request.getParameter("cargo"));
 		c.setUrl(request.getParameter("url"));
