@@ -89,6 +89,28 @@ public class CandidatoDao {
 		return listaCandidatos;
 	}
 	
+	public ArrayList<Candidato> buscarUltimosCadastrados() {
+		String sql = "SELECT * FROM candidato ORDER BY id DESC LIMIT 6";
+		ArrayList<Candidato> ultimosCadastrados = new ArrayList<>();
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Candidato c = new Candidato();
+				c = preencherCandidato(rs);
+				ultimosCadastrados.add(c);
+			}
+			
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+
+		return ultimosCadastrados;
+	}
+	
 	public Candidato buscarPorId(Candidato candidato) {
 		String sql = "SELECT * FROM candidato WHERE id = ?";
 		try {

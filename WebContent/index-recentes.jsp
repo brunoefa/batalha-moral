@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -11,29 +12,13 @@
             </div>
             <div class="row">
             	
+				<c:forEach items="${ultimosCadastrados}" var="candidato">            	
+            	
             	<div class="col-sm-4 portfolio-item">
-                    <img src="img/barack.jpg" class="img-responsive small-profile img-circle" alt="">
+                    <img src="${candidato.url}" class="img-responsive small-profile img-circle" alt="">
                 </div>
                 
-                <div class="col-sm-4 portfolio-item">
-                    <img src="img/barack.jpg" class="img-responsive small-profile img-circle" alt="">
-                </div>
-                
-                <div class="col-sm-4 portfolio-item">
-                    <img src="img/barack.jpg" class="img-responsive small-profile img-circle" alt="">
-                </div>
-                
-                <div class="col-sm-4 portfolio-item">
-                    <img src="img/barack.jpg" class="img-responsive small-profile img-circle" alt="">
-                </div>
-                
-                <div class="col-sm-4 portfolio-item">
-                    <img src="img/barack.jpg" class="img-responsive small-profile img-circle" alt="">
-                </div>
-                
-                <div class="col-sm-4 portfolio-item">
-                    <img src="img/barack.jpg" class="img-responsive small-profile img-circle" alt="">
-                </div>
+                </c:forEach>
 
                 <div class="col-lg-8 col-lg-offset-2 text-center margin-top5">
                     <a href="#" class="btn btn-lg btn-primary">

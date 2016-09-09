@@ -1,0 +1,6 @@
+INSERT INTO candidato (nome, cargo, cidade, url, partido, numero) VALUES ("Kaliu","Prefeito"," Belo Horizonte","https://pbs.twimg.com/profile_images/766304068243451904/SKepBY7j.jpg","PHS","31");
+INSERT INTO candidato (nome, cargo, cidade, url, partido, numero) VALUES ("Reginaldo Lopes","Prefeito","Belo Horizonte","https://pbs.twimg.com/profile_images/530722467954692096/v006eGBV_400x400.png","PT","13");
+INSERT INTO candidato (nome, cargo, cidade, url, partido, numero) VALUES ("João Leite","Prefeito","Belo Horizonte","https://pbs.twimg.com/profile_images/765679282744156161/ifJ2Rkxj.jpg","PSDB","45");
+INSERT INTO candidato (nome, cargo, cidade, url, partido, numero) VALUES ("Luiz Tibé","Prefeito","Belo Horizonte"," https://pbs.twimg.com/profile_images/766011409863995392/MxAiQHDT.jpg","PT do B","70");
+INSERT INTO candidato (nome, cargo, cidade, url, partido, numero) VALUES ("Marcelo Álvaro Antônio","Prefeito","Belo Horizonte","https://farm4.staticflickr.com/3814/buddyicons/75955281@N05_r.jpg","PR","22");
+INSERT INTO candidato (nome, cargo, cidade, url, partido, numero) VALUES ("Vanessa Portugal","Prefeito","Belo Horizonte","https://pbs.twimg.com/profile_images/432957364090585088/stNo2sP9.jpeg","PSTU","16");
