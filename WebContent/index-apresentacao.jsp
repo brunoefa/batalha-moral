@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive img-circle medium-profile" src="img/barack.jpg" alt="">
+                    <img class="img-responsive img-circle medium-profile" src="${candidatoRandomico.url}" alt="">
                     <div class="intro-text">
                         <span class="name">Que começe a batalha</span>
                         <hr class="star-light">

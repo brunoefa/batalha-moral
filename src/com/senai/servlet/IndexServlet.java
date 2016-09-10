@@ -34,12 +34,18 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		buscarUltimosCadastrados(request, response);
+		buscarCandidatoRandomico(request, response);
 		encaminharRequisicao(request, response, "index.jsp");
 	}
 	
 	private void buscarUltimosCadastrados (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Candidato> ultimosCadastrados = candidatoDao.buscarUltimosCadastrados();
 		request.setAttribute("ultimosCadastrados", ultimosCadastrados);
+	}
+	
+	private void buscarCandidatoRandomico (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Candidato candidatoRandomico = candidatoDao.buscarRandomico();
+		request.setAttribute("candidatoRandomico", candidatoRandomico);
 	}
 	
 	private void encaminharRequisicao(HttpServletRequest request, HttpServletResponse response, String caminho) throws ServletException, IOException {

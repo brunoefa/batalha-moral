@@ -111,6 +111,26 @@ public class CandidatoDao {
 		return ultimosCadastrados;
 	}
 	
+	public Candidato buscarRandomico() {
+		String sql = "SELECT * FROM candidato ORDER BY rand()";
+		Candidato candidato = new Candidato();
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				candidato = preencherCandidato(rs);
+			}
+			
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+
+		return candidato;
+	}	
+	
 	public Candidato buscarPorId(Candidato candidato) {
 		String sql = "SELECT * FROM candidato WHERE id = ?";
 		try {
