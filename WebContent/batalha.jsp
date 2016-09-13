@@ -31,7 +31,7 @@
         		<input type="hidden" name="candidato2" value="${batalha.candidato2.id}">
         		<input type="hidden" name="vencedor" value="${batalha.candidato2.id}">
         		<input type="submit" value="Meu Voto" class="btn btn-default btn-lg margin-top1 margin-bottom1">
-        		<div class="g-recaptcha" data-sitekey="6Lc6_SkTAAAAAOkcx4vPxxtbWCeZ_hyc4VEWcT1p"></div>
+        		
         	</form>
         </div>
 
