@@ -151,7 +151,7 @@ public class CandidatoDao {
 		return candidato;
 	}
 	
-	private Candidato preencherCandidato(ResultSet rs) throws SQLException{
+	public Candidato preencherCandidato(ResultSet rs) throws SQLException{
 		Candidato c = new Candidato();
 		c.setId(rs.getInt("id"));
 		c.setNome(rs.getString("nome"));

@@ -10,6 +10,27 @@ public class Candidato {
 	private String partido;
 	private String numero;
 	
+
+	public Candidato() {
+	
+	}
+
+	public Candidato(Integer id) {
+		super();
+		this.id = id;
+	}
+
+	public Candidato(String nome, String cargo, String url, String cidade, String partido, String numero) {
+		super();
+		this.nome = nome;
+		this.cargo = cargo;
+		this.url = url;
+		this.cidade = cidade;
+		this.partido = partido;
+		this.numero = numero;
+	}
+	
+	
 	public Integer getId() {
 		return id;
 	}

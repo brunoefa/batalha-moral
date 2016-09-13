@@ -21,7 +21,7 @@
                         <a href="candidato?acao=listar">Candidatos</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="">Batalha</a>
+                        <a href="batalha">Batalha</a>
                     </li>
                     <li class="page-scroll">
                         <a href="">Entrar</a>
