@@ -651,3 +651,7 @@ form {
 .candidato-left img, .candidato-right img {
 	display: inline;
 } 
+
+.confirmation{
+	display: inline-block;
+}

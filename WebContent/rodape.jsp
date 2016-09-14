@@ -55,6 +55,7 @@
 
 <!-- Theme JavaScript -->
 <script src="js/freelancer.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 

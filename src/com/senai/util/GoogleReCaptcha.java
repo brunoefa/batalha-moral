@@ -23,7 +23,7 @@ public class GoogleReCaptcha {
 
 		// Request parameters and other properties.
 		List<NameValuePair> params = new ArrayList<NameValuePair>(2);
-		params.add(new BasicNameValuePair("secret", "6Lc6_SkTAAAAAH_1f8Vfz0gWWL9lDdxZJIteau53"));
+		params.add(new BasicNameValuePair("secret", "6Lc7_SkTAAAAAKBoxVeJTvaEAvgmok-5WplJ27p4"));
 		params.add(new BasicNameValuePair("response", gRecaptchaResponse));
 		httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
@@ -40,4 +40,5 @@ public class GoogleReCaptcha {
 		    }
 		}
 	}
+	
 }
