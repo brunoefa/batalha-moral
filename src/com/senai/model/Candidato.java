@@ -9,6 +9,7 @@ public class Candidato {
 	private String cidade;
 	private String partido;
 	private String numero;
+	private Integer votos;
 	
 
 	public Candidato() {
@@ -72,6 +73,14 @@ public class Candidato {
 	}
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+
+	public Integer getVotos() {
+		return votos;
+	}
+
+	public void setVotos(Integer votos) {
+		this.votos = votos;
 	}
 
 }

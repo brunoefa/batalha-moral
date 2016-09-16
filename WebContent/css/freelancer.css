@@ -655,3 +655,13 @@ form {
 .confirmation{
 	display: inline-block;
 }
+
+.progress-bar-1{ background-color: #1abc9c;}
+.progress-bar-2{ background-color: #2ecc71;}
+.progress-bar-3{ background-color: #3498db;}
+.progress-bar-4{ background-color: #9b59b6;}
+.progress-bar-5{ background-color: #34495e;}
+.progress-bar-6{ background-color: #f1c40f;}
+.progress-bar-7{ background-color: #e67e22;}
+.progress-bar-8{ background-color: #e74c3c;}
+.progress-bar-9{ background-color: #95a5a6;}

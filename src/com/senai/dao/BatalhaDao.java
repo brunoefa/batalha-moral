@@ -30,7 +30,6 @@ public class BatalhaDao {
 			System.out.println(e.getMessage());
 			throw new RuntimeException();
 		}
-		
 	}
 	
 	public Batalha gerarBatalha() {
@@ -47,7 +46,26 @@ public class BatalhaDao {
 		}
 
 		return batalha;
-	}	
+	}
+	
+	public Integer totalDeBatalhas() {
+		String sql = "SELECT count(*) FROM batalha";
+		Integer total = 0;
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				total = rs.getInt(1);
+			}
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+
+		return total;
+	}
+		
 	
 	private Batalha preencherBatalha(ResultSet rs) throws SQLException{
 		Batalha b = new Batalha();

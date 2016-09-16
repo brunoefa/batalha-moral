@@ -24,6 +24,10 @@
                         <a href="batalha">Batalha</a>
                     </li>
                     <li class="page-scroll">
+                        <a href="candidato?acao=relatorio-geral">Parcial</a>
+                    </li>
+                    
+                    <li class="page-scroll">
                         <a href="">Entrar</a>
                     </li>
                     <!-- 

@@ -89,6 +89,28 @@ public class CandidatoDao {
 		return listaCandidatos;
 	}
 	
+	public ArrayList<Candidato> buscarPorVitoria() {
+		String sql = "select c.*, count(*) votos from candidato c, batalha b where c.id = b.vencedor group by c.nome order by votos DESC";
+		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Candidato c = new Candidato();
+				c = preencherCandidato(rs);
+				listaCandidatos.add(c);
+			}
+			
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+
+		return listaCandidatos;
+	}
+	
 	public ArrayList<Candidato> buscarUltimosCadastrados() {
 		String sql = "SELECT * FROM candidato ORDER BY id DESC LIMIT 6";
 		ArrayList<Candidato> ultimosCadastrados = new ArrayList<>();
@@ -160,6 +182,15 @@ public class CandidatoDao {
 		c.setPartido(rs.getString("partido"));
 		c.setCidade(rs.getString("cidade"));
 		c.setNumero(rs.getString("numero"));
+		
+		try {
+			c.setVotos(rs.getInt("votos"));
+		} catch (SQLException e) {
+			if (!e.getMessage().contains("votos")){
+				throw e;
+			}
+		}
+		
 		return c;
 	}
 	

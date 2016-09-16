@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.senai.dao.BatalhaDao;
 import com.senai.dao.CandidatoDao;
 import com.senai.model.Candidato;
 
@@ -21,9 +22,11 @@ public class CandidatoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	CandidatoDao candidatoDao;
+	BatalhaDao batalhaDao;
 
     public CandidatoServlet() {
     	candidatoDao = new CandidatoDao();
+    	batalhaDao = new BatalhaDao();
     }
 
 	/**
@@ -40,6 +43,8 @@ public class CandidatoServlet extends HttpServlet {
 			excluir(request, response);
 		} else if ("listar".equals(acao)) {
 			listar(request, response);				
+		} else if ("relatorio-geral".equals(acao)) {
+			mostrarRelatorioGeral(request, response);				
 		} else {
 			cadastrar(request, response);
 		}
@@ -82,6 +87,15 @@ public class CandidatoServlet extends HttpServlet {
 		listaCandidatos = candidatoDao.buscarTodos();
 		request.setAttribute("listaCandidatos", listaCandidatos);
 		encaminharRequisicao(request, response, "candidato-list.jsp");
+	}
+	
+	private void mostrarRelatorioGeral(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		ArrayList<Candidato> listaCandidatos = new ArrayList<Candidato>();
+		listaCandidatos = candidatoDao.buscarPorVitoria();
+		Integer totalDeBatalhas = batalhaDao.totalDeBatalhas();
+		request.setAttribute("listaCandidatos", listaCandidatos);
+		request.setAttribute("totalDeBatalhas", totalDeBatalhas);
+		encaminharRequisicao(request, response, "relatorio-geral.jsp");
 	}
 	
 	private Candidato capturarCandidato(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
