@@ -4,6 +4,7 @@
 	<jsp:param value="Batalha Moral | Seja Bem-Vindo" name="titulo" />
 </jsp:include>
 <jsp:include page="menu.jsp"></jsp:include>
+<jsp:include page="mensagem.jsp"></jsp:include>
 <jsp:include page="index-apresentacao.jsp"></jsp:include>
 <jsp:include page="index-recentes.jsp"></jsp:include>
 <jsp:include page="index-sobre.jsp"></jsp:include>

@@ -28,7 +28,7 @@
                     </li>
                     
                     <li class="page-scroll">
-                        <a href="">Entrar</a>
+                        <a href="usuario">Entrar</a>
                     </li>
                     <!-- 
                     <li class="page-scroll">
@@ -40,4 +40,4 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
-    </nav>
+    </nav>   
