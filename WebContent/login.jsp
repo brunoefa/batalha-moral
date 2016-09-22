@@ -22,7 +22,7 @@
            </div>
        </div>
        <br>
-       <p><a href="usuario?acao=lembrar">Esqueceu sua senha</a> ou <a href="usuario?acao=cadastrar">ainda não é cadastrado?</a></p>
+       <p><a href="usuario?acao=esqueci">Esqueceu sua senha</a> ou <a href="usuario?acao=cadastrar">ainda não é cadastrado?</a></p>
        <br>
        <div class="row">
            <div class="form-group col-xs-12">

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.senai.dao.UsuarioDao;
 import com.senai.model.Usuario;
+import com.senai.util.SendMail;
 
 /**
  * Servlet implementation class IndexServlet
@@ -61,14 +62,18 @@ public class UsuarioServlet extends HttpServlet {
 	}
 	
 	private void recuperar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// capturar email
-		// buscar senha no banco
-		// enviar senha por e-mail
-		// mostrar mensagem de senha enviada
-		// exibir lembrete de senha
+		Usuario usuario = capturarUsuario(request, response);
+		usuario = usuarioDao.buscarPorEmail(usuario);
+		try {
+			SendMail email = new SendMail();
+			email.send(usuario.getEmail(), usuario.getSenha());
+		} catch (Exception e) {
+			request.setAttribute("mensagemErro", "Não foi possível encontrar o e-mail informado :(");
+		}
+		request.setAttribute("mensagemSucesso", "Sua senha foi enviada por e-mail");
+		request.setAttribute("lembrete", usuario.getLembrete());
 		encaminharRequisicao(request, response, "usuario-recuperar.jsp");
 	}	
-
 	
 	private void logar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario usuarioForm = capturarUsuario(request, response);
