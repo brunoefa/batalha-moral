@@ -1,6 +1,7 @@
 package com.senai.servlet;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.senai.dao.UsuarioDao;
 import com.senai.model.Usuario;
+import com.senai.util.Criptografia;
 import com.senai.util.SendMail;
 
 /**
@@ -80,7 +82,15 @@ public class UsuarioServlet extends HttpServlet {
 		Usuario usuarioBanco = usuarioDao.buscarPorEmail(usuarioForm);
 		String destino = "";
 		
-		if (usuarioForm.getSenha().equals(usuarioBanco.getSenha())) {
+		String senhaCriptografada = "";
+				
+		try {
+			senhaCriptografada = Criptografia.criptografar(usuarioForm.getSenha());
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		if (senhaCriptografada.equals(usuarioBanco.getSenha())) {
 			request.getSession().setAttribute("usuario", usuarioBanco);
 			request.setAttribute("mensagemSucesso", "Login efetuado com sucesso");
 			destino = "index";
@@ -93,6 +103,11 @@ public class UsuarioServlet extends HttpServlet {
 	
 	private void salvar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario usuario = capturarUsuario(request, response);
+		try {
+			usuario.setSenha(Criptografia.criptografar(usuario.getSenha()));
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println(e.getMessage());
+		}
 		usuarioDao.salvar(usuario);
 		usuario = usuarioDao.buscarPorEmail(usuario);
 		request.getSession().setAttribute("usuario", usuario);
