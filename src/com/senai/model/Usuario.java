@@ -47,7 +47,10 @@ public class Usuario {
 	}
 	
 	public String getPrimeiroNome() {
-		return this.nome.substring(0, this.nome.indexOf(" "));
+		if (nome.contains(" ")) {
+			return nome.substring(0, nome.indexOf(" "));
+		}
+		return nome;
 	}
 	
 }
