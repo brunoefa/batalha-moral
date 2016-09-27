@@ -10,9 +10,11 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.senai.model.Usuario;
+
 public class SendMail {
 
-	public void send(String to, String pass) {
+	public void send(String to, Usuario usuario) {
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -35,9 +37,9 @@ public class SendMail {
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 			message.setSubject("Recuperação de Senha - Batalha Moral");
 			message.setText("Ola,\n\n"
-						  + "Conforme solicitado, segue sua senha de acesso ao Batalha Moral:\n\n"
-						  + "Senha: " + pass +"\n\n"
-					  	  + "Acesse http://localhost:8080/bm/usuario para fazer login\n\n"
+						  + "Conforme solicitado, segue o link de acesso para redefinição senha:\n\n"
+						  + "http://localhost:8080/bm/usuario?acao=redefinir&id="+ usuario.getId() +"&recuperacao=" + usuario.getRecuperacao() +" \n\n"
+						  + "Acesse o link acime para que uma nova senha seja criada:\n\n"
 					  	  + "Att.");
 
 			Transport.send(message);

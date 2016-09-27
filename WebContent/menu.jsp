@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 	<!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -27,14 +28,18 @@
                         <a href="candidato?acao=relatorio-geral">Parcial</a>
                     </li>
                     
+                    <c:if test="${empty sessionScope.usuario}">
                     <li class="page-scroll">
                         <a href="usuario">Entrar</a>
                     </li>
-                    <!-- 
+                    </c:if>
+                    
+                    <c:if test="${not empty sessionScope.usuario}">
                     <li class="page-scroll">
-                        <a href=""><img class="img-responsive img-circle tiny-profile" src="img/barack.jpg" alt=""></a>
+                        <span>${sessionScope.usuario.primeiroNome} <a href="usuario?acao=sair">(Sair)</a></span>
                     </li>
-                    -->                    
+                    </c:if>
+                                        
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

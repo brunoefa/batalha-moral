@@ -153,6 +153,13 @@ header .intro-text .skills {
   color: white;
   border-color: #18BC9C;
 }
+
+.navbar-custom .navbar-nav li span {
+	display: block;
+    color: white;
+    padding: 15px;
+}
+
 @media (min-width: 768px) {
   .navbar-custom {
     padding: 25px 0;

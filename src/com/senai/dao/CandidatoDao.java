@@ -47,7 +47,6 @@ public class CandidatoDao {
 			System.out.println(e.getMessage());
 			throw new RuntimeException();
 		}
-		
 	}
 	
 	public void excluir(Candidato c) {

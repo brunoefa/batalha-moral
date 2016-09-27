@@ -7,6 +7,7 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private String lembrete;
+	private String recuperacao;
 	
 	public Integer getId() {
 		return id;
@@ -37,6 +38,16 @@ public class Usuario {
 	}
 	public void setLembrete(String lembrete) {
 		this.lembrete = lembrete;
+	}
+	public String getRecuperacao() {
+		return recuperacao;
+	}
+	public void setRecuperacao(String recuperacao) {
+		this.recuperacao = recuperacao;
+	}
+	
+	public String getPrimeiroNome() {
+		return this.nome.substring(0, this.nome.indexOf(" "));
 	}
 	
 }
